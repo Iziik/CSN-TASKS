@@ -1,0 +1,29 @@
+{
+    "family":"grafana-fargate-task",
+    "requiresCompatibilities":["FARGATE"],
+    "networkMode":"awsvpc",
+    "cpu":"256",
+    "memory":"512",
+    "executionRoleArn":"arn:aws:iam::awsid:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name":"grafana",
+            "image":"grafana/grafana:latest",
+            "portMappings": [
+                {
+                    "containerPort":3000,
+                    "protocol":"tcp"
+                }
+            ]
+        }
+    ],
+    "essential":true,
+    "environment": [],
+    "logConfiguration": {
+      "logDriver":"awslogs",
+      "options": {
+         "awslogs-group":"/ecs/grafana-fargate",
+        "awslogs-region":"us-east-1"
+      }
+    }
+}
