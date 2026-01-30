@@ -1,17 +1,30 @@
-# Grafana Deployment on ECS
+# Week 5 — Grafana on ECS Fargate
 
-## Task Definition
-The objective of this week is to deploy Grafana, a popular open-source dashboard tool, using Amazon ECS with FARGATE.
+## 🏗️ System Architecture
 
-STEPS;
-- Use the official Docker image `grafana/grafana`
-- Create an **ECS Cluster**.
-- Create a task definition that exposes port 3000
-- Run the service/task in a public subnet
-- Ensure the associated **Security Group** allows inbound taffic on port 3000.
-- Access the service via **Public IP/3000** once running.
 
-`Grafana login credentials`
-**username**: `admin`
-**Password**: `admin`
+This task deploys **Grafana** (observability dashboard) as a container on **AWS ECS Fargate** with load balancing.
+
+## 🧰 Implementation
+
+1. Build/pull **Grafana Docker image**.
+2. Create **ECS Cluster** and **Fargate service**.
+3. Define **Task Definition** (port 3000 exposure).
+4. Configure **Application Load Balancer**.
+5. Set IAM roles for ECS tasks and load balancer target groups.
+
+## 🛠️ Tools & Trade-Offs
+
+| Tool | Purpose | Trade-offs |
+|------|---------|------------|
+| **Grafana** | Metrics dashboard | UI complexity; needs data sources |
+| **AWS ECS Fargate** | Serverless containers | Simpler ops, more expensive than EC2 |
+| **ALB** | HTTP routing | Extra cost, powerful routing |
+
+## 🪶 Real-World Use Cases
+
+✔ Central metrics & logging dashboard  
+✔ Alerting on production KPIs  
+✔ Multi-tenant monitoring portal  
+✔ Dashboard for DevOps observability
 
