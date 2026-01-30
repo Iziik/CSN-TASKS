@@ -1,11 +1,30 @@
-##Multi-VPC Peering Architecture
+# Week 4 — Multi-VPC Peering Architecture
 
-In this task, you will create two seperate VPCs in your AWS environment to simulate a multi-vpc architecture
+## 🏗️ Architecture Diagram
 
--Configure **VPC-A** with the CIDR block **10.10.0.0/16** and **VPC-B** with **10.20.0.0/16**
--In each VPC, create one public subnet and one private subnet 
--Establish a **VPC peering connection** between the two VPCs.
--Update the **route tables** in each VPC to allow traffic to flow between them via the peering connection.
+This setup uses **VPC Peering** to allow network traffic between multiple isolated Virtual Private Clouds.
 
-PICTUYRE
+## 🧰 Implementation
+
+1. Create **two distinct VPCs** (dev and prod).
+2. Define **subnets, route tables, and ACLs** for each VPC.
+3. Establish a **VPC Peering Connection** between the two.
+4. Update **route tables** to enable cross-VPC traffic.
+5. Confirm connectivity using EC2 instances ping/SSH.
+
+## 🛠️ Tools Used
+
+| Tool | Purpose | Trade-offs |
+|------|---------|------------|
+| **AWS VPC Peering** | Enables private links between VPCs | Simple but not transitive |
+| **Route Tables** | Direct traffic across peering links | Manual maintenance |
+| **Terraform / IaC** | Automate infra provisioning | Learning curve for beginners |
+
+## 🚀 Use Cases
+
+✔ Secure cross-environment communication. 
+✔ Shared service access (e.g., central logging).  
+✔ Multi-tenant infrastructure.  
+✔ Separation of dev/qa/infrastructure environments.
+
 
